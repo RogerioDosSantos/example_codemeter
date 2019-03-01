@@ -1,0 +1,10 @@
+@PACKAGE_INIT@
+
+# @PROJECT_NAME@ package configuration
+
+include(${CMAKE_CURRENT_LIST_DIR}/../build/linux_default.cmake)
+get_relative_platform_dir(var_relative_platform_dir)
+message("Getting dependencies for ${config_relative_output_dir} Platform.")
+
+include("${PACKAGE_PREFIX_DIR}/@PROJECT_NAME@/${config_relative_output_dir}/cmake/@PROJECT_NAME@_targets.cmake")
+check_required_components("@PROJECT_NAME@")
