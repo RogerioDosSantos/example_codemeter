@@ -7,9 +7,25 @@ project(codemeter_example VERSION 1.0.0)
 
 include("${config_file_path}")
 
+# Link Directories
+# TODO(Roger) - Add this here only because the target_link_directories is not supported in the Visual Studio I am using
+link_directories(
+	PUBLIC ./third_party/codemeter_sdk_64_6.80/DevKit/lib
+)
+
 # Executable
 add_executable(codemeter_example
   ./src/main.cpp
+  ./src/codemeter_example.cpp
+  )
+target_include_directories(codemeter_example
+  PRIVATE ./third_party/codemeter_sdk_64_6.80/DevKit/include
+  )
+# target_link_directories(codemeter_example
+# 	PUBLIC ./third_party/codemeter_sdk_64_6.80/DevKit/lib
+# )
+target_link_libraries(codemeter_example
+  PUBLIC WibuCm32
   )
 
 # Install Include

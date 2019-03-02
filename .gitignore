@@ -1,5 +1,7 @@
 **/stage
-**/.vs
+/.vs/codemeter
+/.vs/config
+/.vs/*.sqlite
 **/build/** 
 !**/build/*.sh
 !**/build/*.bat

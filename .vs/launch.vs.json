@@ -1,0 +1,18 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "codemeter_example.exe",
+      "name": "codemeter_example.exe",
+      "args": [
+        "-sl",
+        "192.168.0.1",
+        6000010,
+        201000
+      ]
+    }
+  ]
+}
