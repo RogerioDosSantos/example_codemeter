@@ -39,8 +39,8 @@ int main(int argc, char const* argv[])
     {
         printf("Invalid Command (%d)\n\t%s\nOptions:\n", argc, arguments[0].c_str());
         printf("\t--consume_server_license [-sl] <server_ip> <company_code> <product_code>\t-E.g.: -sl 192.168.0.10 6000010 201000\n");
+        printf("\t--test");
     }
 
     return 0;
 }
-

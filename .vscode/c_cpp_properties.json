@@ -3,7 +3,9 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/mnt/c/Users/roger.santos/git/roger/examples/cpp/codemeter/**",
+                "C:\\Users\\roger.santos\\git\\roger\\examples\\cpp\\codemeter\\**"
             ],
             "defines": [
                 "_DEBUG",
