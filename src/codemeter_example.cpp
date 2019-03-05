@@ -41,7 +41,14 @@ bool CodeMeter::ConsumeServerLicense(const char* server_ip, const char* company_
     memcpy(&codemeter_access.mabIPv4Address, ip_address, 4);
 
     HCMSysEntry handle = CmAccess(CM_ACCESS_LAN, &codemeter_access);
-    system("pause");
+	if (handle != NULL)
+		system("pause");
+	else
+	{
+		int error = CmGetLastErrorCode();
+		printf("Could not connect to server %s. Company Code: %s ; Product Code: %s ; ErrorL 0%X\n", server_ip, company_code, product_code, error);
+	}
+		
     CmRelease(handle);
     handle = NULL;
     return true;

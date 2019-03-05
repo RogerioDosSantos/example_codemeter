@@ -1,0 +1,26 @@
+
+version: "3"
+services:
+      
+  debug_codemeter_example:
+    build:
+      context: ./
+      dockerfile: ./debug_windows.docker
+      args:
+        base_image: "rogersantos/codemeter_example:windows"
+        # base_image: "build/setup_test:windows"
+    image: "rogersantos/debug_codemeter_example:windows"
+    # entrypoint: powershell
+    stdin_open: true
+    tty: true
+    ports:
+      - "4021:4021"
+      - "4022:4022"
+    volumes:
+      # - "C:\\Users\\roger.santos\\git\\roger\\examples\\cpp\\codemeter\\build\\windows_x86_release:C:\\workspace\\app"
+      - "C:\\Users\\roger.santos\\git\\roger\\examples\\cpp\\codemeter\\build\\windows_x86_debug:C:\\workspace\\debug"
+    # environment:
+    #   - LICENSE_SERVER_ADDRESS=10.161.107.30
+    #   - HTTP_PROXY=http://gateway.zscaler.net:9480
+    #   - HTTPS_PROXY=http://gateway.zscaler.net:9480
+    #   - NO_PROXY=127.0.0.1,192.168.99.100,10.229.206.135,swtfsiws,dev.wonderware.com

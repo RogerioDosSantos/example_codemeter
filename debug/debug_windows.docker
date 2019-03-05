@@ -1,0 +1,25 @@
+# Add debug tool to a base image
+
+ARG base_image="microsoft/windowsservercore:1803"
+
+FROM rogersantos/windows_core_debugger:windows AS debugger
+
+FROM "${base_image}" 
+
+# Install / Configure Debugging Tools
+COPY --from=debugger ["C:/workspace/vs_2017_remote_debugger", "C:/vs_2017_remote_debugger"]
+COPY --from=debugger ["C:/workspace/windows_10_debuggers", "C:/windows_10_debuggers"]
+ENTRYPOINT cmd
+RUN powershell -Command $ErrorActionPreference = 'Stop' ; \
+  echo '*** Configuring Debugging' ; \
+  echo '- Enable GFlags dependencies' ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i codemeter_example.exe +sls ; \
+  C:\windows_10_debuggers\x64\gflags.exe -i CodeMeter.exe +sls ; \
+echo '*** Configuring Debugging - DONE'
+## Launch the remote execute as soon docker runs
+ENTRYPOINT C:\vs_2017_remote_debugger\x86\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:36000
+
+# COPY ["product_stage/wibu/syswow64", "C:/Windows/SysWOW64"]
+# COPY ["product_stage/wibu/program_files_x86", "C:/Program Files (x86)"]
+
+

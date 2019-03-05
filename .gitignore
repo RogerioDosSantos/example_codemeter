@@ -9,3 +9,11 @@
 !**/build/*.in
 !**/build/DockerFile
 tags
+tags.lock
+tags.temp
+debug/visual_studio/remote_debug/.vs/
+debug/visual_studio/remote_debug/Debug/
+third_party/
+debug/visual_studio/remote_debug/remote_debug.vcxproj.filters
+debug/visual_studio/remote_debug/remote_debug.vcxproj.user
+.vs/launch.vs.json

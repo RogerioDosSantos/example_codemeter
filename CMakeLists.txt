@@ -5,8 +5,6 @@ include(GenerateExportHeader)
 
 project(codemeter_example VERSION 1.0.0)
 
-include("${config_file_path}")
-
 # Link Directories
 # TODO(Roger) - Add this here only because the target_link_directories is not supported in the Visual Studio I am using
 link_directories(
@@ -28,28 +26,28 @@ target_link_libraries(codemeter_example
   PUBLIC WibuCm32
   )
 
-# Install Include
+  # Install Include
 install(
   DIRECTORY "./include"
-  DESTINATION ${config_relative_output_dir}/../..
+  DESTINATION include
   FILES_MATCHING PATTERN "*"
   )
 
-# Install Targets (Binaries)
+  # Install Targets (Binaries)
 install(TARGETS
   codemeter_example
   EXPORT codemeter_example_targets
-  LIBRARY DESTINATION ${config_relative_output_dir}/bin
-  RUNTIME DESTINATION ${config_relative_output_dir}/bin
-  ARCHIVE DESTINATION ${config_relative_output_dir}/lib
-  INCLUDES DESTINATION ${config_relative_output_dir}/../../include
+  LIBRARY DESTINATION bin
+  RUNTIME DESTINATION bin
+  ARCHIVE DESTINATION lib
+  INCLUDES DESTINATION include
   )
 
-# Install CMAKE Configuration Files
+  # Install CMAKE Configuration Files
 install(
   EXPORT codemeter_example_targets
   NAMESPACE example
-  DESTINATION "${config_relative_output_dir}/cmake"
+  DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/cmake"
   )
 write_basic_package_version_file(
   "${CMAKE_CURRENT_BINARY_DIR}/cmake/${CMAKE_PROJECT_NAME}-configversion.cmake" COMPATIBILITY SameMajorVersion
