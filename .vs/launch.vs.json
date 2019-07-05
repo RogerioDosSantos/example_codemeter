@@ -6,12 +6,16 @@
       "type": "default",
       "project": "CMakeLists.txt",
       "projectTarget": "codemeter_example.exe",
+      //"remoteMachine": "localhost:4022",
       "name": "codemeter_example.exe",
       "args": [
         "-sl",
-        "192.168.0.1",
-        6000010,
-        201000
+        //"192.168.0.1",
+        //6000010,
+        //201000
+        "10.229.206.175",
+        100585,
+        757445008
       ]
     }
   ]
